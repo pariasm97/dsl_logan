@@ -45,8 +45,10 @@ class Evaluator(Transformer):
 
     def load(self, filename):
         try:
+            log_dir = 'logs'
             filename = f'{filename}.log'
-            with open(filename) as file:
+            full_path = os.path.join(log_dir, filename)
+            with open(full_path) as file:
                 self.log_entries = file.readlines()
             return f"Loaded {len(self.log_entries)} entries from {filename}"
         except FileNotFoundError as e:
@@ -168,7 +170,7 @@ class Evaluator(Transformer):
             full_path = os.path.join(export_dir, tfilename + '.log')
             with open(full_path, 'w') as file:
                 file.writelines(entries)
-            message = f"{file_or_var} exported succesfully to {tfilename}.log"
+            message = f"{file_or_var} exported succesfully to {full_path}"
             return message
         except IOError as e:
             return f"Error exporting to file {tfilename}: {e}"
