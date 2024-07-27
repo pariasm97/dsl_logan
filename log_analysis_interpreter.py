@@ -1,6 +1,7 @@
 from lark import Lark
 from evaluator import Evaluator
 import logging
+import os
 
 class LogAnalysisInterpreter:
     
@@ -19,7 +20,10 @@ class LogAnalysisInterpreter:
     def _setup_logger(self):
         logger = logging.getLogger('LogAnalysisInterpreter')
         logger.setLevel(logging.DEBUG)
-        fh = logging.FileHandler('log_analysis_interpreter.log')
+        export_dir = 'log_analysis_logs'
+        os.makedirs(export_dir, exist_ok=True)
+        full_path = os.path.join(export_dir, 'log_analysis_interpreter.log')
+        fh = logging.FileHandler(full_path)
         fh.setLevel(logging.INFO)   
         ch = logging.StreamHandler()
         ch.setLevel(logging.INFO)   
