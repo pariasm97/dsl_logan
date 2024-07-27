@@ -1,0 +1,8 @@
+load(logs.log);
+all_errors = search(ERROR, logs.log);
+export(from=all_errors, to=error_logs.log);
+recent_logs = filter_by_date('2024-07-20', '2024-07-25', logs.log);
+summarize(recent_logs);
+info_logs = search(INFO, recent_logs);
+export(from=info_logs, to=info_logs.log);
+count_by_level(logs.log);
