@@ -61,6 +61,7 @@ count_by_level(logs.log);
 > [!IMPORTANT]
 > **Logan Specifications**
 > - All commands end with *;*
+> - All commands should be separated by an enter space.
 > - All commands have parenthesis to enclose the parameters.
 > - All commands should be written in lower case.
 > - Only works with .log files.
